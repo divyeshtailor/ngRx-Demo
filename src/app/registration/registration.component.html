@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="container-fluid loginForm ">
+    <div class="card col-sm-4">
+      <h4 class="card-header"><strong>Sign In</strong></h4>
+      <div class="card-body">
+        <form [formGroup]="regForm">
+          <div>
+            <label>User Name</label>
+            <input class="form-control" formControlName="userName" required>
+          </div>
+          <div>
+            <label>Email</label>
+            <input class="form-control" formControlName="email" required>
+            <mat-error [ngClass]="regForm.controls.email.errors">Required Field</mat-error>
+          </div>
+          <div formArrayName="address" class="mt-2 mb-4">
+            <div  *ngFor="let ad of address.controls; let i=index" class="borderClass">
+              <div class="address">
+                <strong >Address:</strong>
+              </div>
+              <div [formGroupName]="i">
+                  <div >
+                    <label class="mt-2">City</label>
+                    <input class="form-control" formControlName="city">
+                  </div>
+                  <div>
+                    <label class="mt-2">State</label>
+                    <input class="form-control" formControlName="state">
+                  </div>
+                  <div>
+                    <label class="mt-2">Pin Code</label>
+                    <input class="form-control" formControlName="pin">
+                  </div>
+              </div>
+              <div class="button-group-delete mt-5">
+                <button class="btn btn-danger me-1" [disabled]="i === 0" (click)="removeAddress(i)">Delete Address</button>
+              </div>
+            </div>
+          </div>
+          <div class="button-group mt-5">
+            <button  class="btn btn-primary me-1" (click)="addAddress()">Add Address</button>
+            <button *ngIf="updateRecord" class="btn btn-info  me-1" (click)="update()">Update Address</button>
+            <button *ngIf="!updateRecord" type="submit" class="btn btn-success me-1" (click)="onSubmit()">Register User</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

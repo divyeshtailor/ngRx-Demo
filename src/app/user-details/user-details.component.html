@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="card table-card">
+    <h4 class="card-header">Registered Users</h4>
+    <div class="card-body">
+      <table mat-table [dataSource]="dataSource"
+             class="mat-elevation-z8 table">
+
+        <!-- User Column -->
+        <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef>
+            User Name
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>
+            Email
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- Address Column -->
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef >
+            Address
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngFor="let add of element.address">
+              <span><strong>City: </strong>{{add.city}} </span>
+              <span><strong>State: </strong>{{add.state}} </span>
+              <span><strong>Pin Code: </strong>{{add.pin}}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actionDelete">
+          <th mat-header-cell *matHeaderCellDef >
+          Delete
+          </th>
+          <td mat-cell *matCellDef="let element; let i = index"><button class="delete-button" [disabled]="i === 0" (click)="deleteRecord(i)"><i class="bi bi-trash3-fill icon-tag"></i></button></td>
+
+
+        </ng-container>
+
+        <ng-container matColumnDef="actionEdit">
+          <th mat-header-cell *matHeaderCellDef >
+            Edit
+          </th>
+          <td mat-cell *matCellDef="let element; let i = index"><button class="edit-button" (click)="updateRecord(i, element)"><i class="bi bi-pencil-fill"></i></button></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; let i = index columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+</div>
+

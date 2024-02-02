@@ -1,0 +1,46 @@
+.container{
+  width: 100%;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .loginForm{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .card-body{
+      height: 650px;
+      overflow-y:auto
+    }
+    .button-group{
+      display: flex;
+      justify-content: center;
+      align-content: center;
+
+      button{
+        color: white;
+      }
+    }
+
+    .borderClass{
+      border-style: ridge;
+      padding: 10px;
+      margin-bottom: 5px;
+    }
+
+    .button-group-delete{
+      display: flex;
+      justify-content: right;
+      align-content: center;
+    }
+
+    .address{
+      margin-top: 10px !important;
+    }
+  }
+}
+
